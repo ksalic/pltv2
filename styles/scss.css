@@ -1,0 +1,27 @@
+.above-below-splash .slick-track {
+  height: 100%;
+}
+.above-below-splash .slick-track .slick-slide > div {
+  height: 100%;
+}
+.above-below-splash a {
+  display: flex !important;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-inline-end: 1px;
+  border-right: 1px white solid;
+}
+.above-below-splash a div > div {
+  width: 30px;
+  margin-inline-end: 10px !important;
+}
+.above-below-splash a .above-below-image span:not(.text-label) {
+  width: 30px;
+  margin-inline-end: 10px !important;
+}
+.above-below-splash a:last-child {
+  margin-inline-end: 0;
+}
+.above-below-splash--skeleton {
+  min-height: 36px;
+}
