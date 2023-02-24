@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {GetServerSideProps, InferGetServerSidePropsType} from 'next';
 import Link from 'next/link';
 import {BrComponent, BrPage, BrPageContext} from '@bloomreach/react-sdk';
-import {initialize} from '@bloomreach/spa-sdk';
+import {initialize, Page} from '@bloomreach/spa-sdk';
 import {relevance} from '@bloomreach/spa-sdk/lib/express';
 import {Banner, Content, Menu, NewsList, CookieConsent} from '../components';
 import {buildConfiguration} from '../utils/buildConfiguration';
@@ -36,16 +36,22 @@ export const getServerSideProps: GetServerSideProps = async ({req: request, res:
     relevance(request, response);
 
     const configuration = buildConfiguration(path ?? '/');
-    const page = await initialize({...configuration, request, httpClient: axios});
 
-    return {props: {configuration, page: page.toJSON()}};
+    return {props: {configuration}};
 };
 
+const mapping = {PinkBanner, "AboveBelowSplash": CallToAction, "Caroursel": Splash, Banners}
+
+
 export default function Index({
-                                  configuration,
-                                  page,
+                                  configuration
                               }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
-    const mapping = {PinkBanner, "AboveBelowSplash": CallToAction, "Caroursel": Splash, Banners}
+
+    const [page, setPage] = useState<Page>();
+
+    useEffect(() => {
+        initialize(configuration).then(page => setPage(page));
+    }, [])
 
     return (
         <>
