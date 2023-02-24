@@ -85,9 +85,11 @@ export default function Index({
                                 </form>
                             </div>
                         </div>
+
                         <BrPage configuration={{...configuration, httpClient: axios}} mapping={mapping} page={page}>
                             <BrComponent path="main"/>
                         </BrPage>
+
                         <Bottom/>
                     </div>
                 </div>
