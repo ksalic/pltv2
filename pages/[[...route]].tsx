@@ -48,7 +48,7 @@ export default function Index({
     const mapping = {PinkBanner, "AboveBelowSplash": CallToAction, "Caroursel": Splash, Banners}
 
     return (
-        <BrPage configuration={{...configuration, httpClient: axios}} mapping={mapping} page={page}>
+        <>
             <Head>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=5"/>
                 <title>Women&#x27;s Fashion Clothing &amp; Dresses | PrettyLittleThing USA</title>
@@ -79,15 +79,13 @@ export default function Index({
                                 </form>
                             </div>
                         </div>
-                        <BrComponent path="main"/>
+                        <BrPage configuration={{...configuration, httpClient: axios}} mapping={mapping} page={page}>
+                            <BrComponent path="main"/>
+                        </BrPage>
                         <Bottom/>
                     </div>
                 </div>
                 <Footer/>
             </div>
-            <BrPageContext.Consumer>
-                {(p) => <CookieConsent isPreview={!!p?.isPreview()} path={configuration.path}/>}
-            </BrPageContext.Consumer>
-        </BrPage>
-    );
+        </>);
 }
