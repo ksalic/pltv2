@@ -9,8 +9,7 @@ export default function Header() {
                                 <div className="hamburger-icon-wrapper float-start cursor-pointer lg:hidden"
                                      data-testid="hamburger-icon-wrapper" role="presentation">
                                     <svg id="menu_svg__Layer_1" data-name="Layer 1"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 130.01"
-                                         alt="menu-icon">
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 130.01">
                                         <defs>
                                             <style
                                                 dangerouslySetInnerHTML={{__html: ".menu_svg__cls-2 {\n                                                fill: #050505\n                                            }"}}/>
@@ -24,7 +23,7 @@ export default function Header() {
                                    href="index.html" aria-label="plt-logo">
                                     <div className="logo" data-testid="sm-header-logo">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.7 18.9"
-                                             alt="pltlogo">
+                                             >
                                             <path fill="#222"
                                                   d="M0 .2h4c1.5 0 2.5.3 3.4 1.3.9 1 1.2 2.1 1.2 4.3 0 1.6-.1 2.7-.8 3.7-.7 1.2-1.8 2-3.8 2H2.7v7.2H0V.2zM2.7 9H4c2.2 0 2.2-1.3 2.2-3.1 0-1.7 0-3.2-2.1-3.2H2.7V9z"/>
                                             <path fill="#231F20"
@@ -52,7 +51,7 @@ export default function Header() {
                                    href="index.html" aria-label="plt-logo">
                                     <div className="logo" data-testid="md-header-logo">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.7 18.9"
-                                             alt="pltlogo">
+                                             >
                                             <path fill="#222"
                                                   d="M0 .2h4c1.5 0 2.5.3 3.4 1.3.9 1 1.2 2.1 1.2 4.3 0 1.6-.1 2.7-.8 3.7-.7 1.2-1.8 2-3.8 2H2.7v7.2H0V.2zM2.7 9H4c2.2 0 2.2-1.3 2.2-3.1 0-1.7 0-3.2-2.1-3.2H2.7V9z"/>
                                             <path fill="#231F20"

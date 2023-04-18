@@ -1,5 +1,8 @@
 import {ContainerItem, ImageSet, Reference} from "@bloomreach/spa-sdk";
 import {BrProps} from "@bloomreach/react-sdk";
+import React from "react";
+import {BrFallBackContext} from "@/partial/BrContent";
+import {useComponentFallBack} from "@/partial/useComponentFallBack";
 
 export interface pltBanner {
     link: string
@@ -18,11 +21,18 @@ export interface pltBannerComponent {
 
 export default function Banners({page, component}: BrProps<ContainerItem>) {
 
-    if (!page) {
+    if (!page || !component) {
         return null
     }
 
+    const [useFallBack, fallBackComponent] = useComponentFallBack(component);
+
+    if (useFallBack) {
+        return fallBackComponent
+    }
+
     const content = component?.getContent<pltBannerComponent>(page);
+
     const desktop = content?.desktop
 
     const {banners} = desktop
