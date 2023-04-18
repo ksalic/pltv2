@@ -4,6 +4,7 @@ import {pltPinkBannerComponent} from "@/components/PinkBanner";
 import React from "react";
 import {BrFallBackContext} from "@/partial/BrContent";
 import {useComponentFallBack} from "@/partial/useComponentFallBack";
+import {withFallback} from "@/components/withFallback";
 
 export interface pltAboveBelowSplash {
     items: pltAboveBelowSplashItem[]
@@ -20,15 +21,10 @@ export interface pltAboveBelowSplashComponent {
     mobile: pltAboveBelowSplash
 }
 
-export default function CallToAction({page, component}: BrProps<ContainerItem>) {
-    if (!page || !component) {
-        return null
-    }
-    const [useFallBack, fallBackComponent] = useComponentFallBack(component);
 
-    if (useFallBack) {
-        return fallBackComponent
-    }
+
+
+function CallToAction({page, component}: BrProps<ContainerItem>) {
 
     const content = component?.getContent<pltAboveBelowSplashComponent>(page);
 
@@ -68,3 +64,5 @@ export default function CallToAction({page, component}: BrProps<ContainerItem>) 
     )
 
 }
+
+export default withFallback(CallToAction);

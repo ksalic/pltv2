@@ -1,8 +1,8 @@
 import React from 'react';
-import {ContainerItem} from "@bloomreach/spa-sdk";
+import {Component} from "@bloomreach/spa-sdk";
 import {BrFallBackContext} from "@/partial/BrContent";
 
-export function useComponentFallBack(component: ContainerItem): [boolean, JSX.Element | undefined] {
+export function useComponentFallBack(component?: Component): [boolean, (JSX.Element | undefined)] {
     const {fallBack} = React.useContext(BrFallBackContext);
 
     if (component?.getProperties()?.useBMS) {

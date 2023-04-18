@@ -144,7 +144,7 @@ export default function Index({
 
 
                         <BrContent configuration={{...configuration, httpClient: axios}}
-                                   mapping={mapping} id={'banner4'} fallBack={<FallBack/>}/>
+                                   mapping={mapping} container={'banner4'} fallBack={<FallBack/>}/>
 
                         <div id="banner-b5">
                             <div className="hidden lg:block">
@@ -985,7 +985,7 @@ export default function Index({
                         </div>
 
                         <BrContent configuration={{...configuration, httpClient: axios}}
-                                   mapping={mapping} id={'bottom'} fallBack={<h2>BMS as fallback</h2>}/>
+                                   mapping={mapping} container={'bottom'} fallBack={<h2>BMS as fallback</h2>}/>
 
 
                         {/*<BrElement httpClient={axios.create({timeout: 500})} environment={'plt'} channel={'bmstest'}*/}
