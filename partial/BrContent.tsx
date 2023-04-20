@@ -1,13 +1,6 @@
 import {BrComponent, BrPage, BrProps} from "@bloomreach/react-sdk";
-import React, {useContext, useEffect, useRef, useState} from "react";
-import {
-    Configuration,
-    ContainerItem,
-    initialize, MetaCollection,
-    Page,
-    TYPE_CONTAINER_BOX,
-    TYPE_CONTAINER_NO_MARKUP
-} from "@bloomreach/spa-sdk";
+import React, {useEffect, useState} from "react";
+import {Configuration, initialize, Page, TYPE_CONTAINER_BOX, TYPE_CONTAINER_NO_MARKUP} from "@bloomreach/spa-sdk";
 
 interface Props {
     fallBack: JSX.Element
@@ -36,8 +29,8 @@ export function BrContent({mapping, configuration, fallBack, page, container}: P
         {pageModel ?
             <BrPage configuration={configuration} mapping={{
                 ...mapping,
-                // [TYPE_CONTAINER_NO_MARKUP]: LayoutContainer,
-                [TYPE_CONTAINER_BOX]: LayoutContainer
+                [TYPE_CONTAINER_NO_MARKUP]: LayoutNoMarkupContainer,
+                [TYPE_CONTAINER_BOX]: DefaultLayoutContainer
             }}
                     page={pageModel}>
                 <BrFallBackContext.Provider value={{fallBack: fallBack}}>
@@ -47,7 +40,7 @@ export function BrContent({mapping, configuration, fallBack, page, container}: P
     </>);
 }
 
-export function LayoutContainer({children, page, component}: React.PropsWithChildren<BrProps>): JSX.Element {
+export function DefaultLayoutContainer({children, page, component}: React.PropsWithChildren<BrProps>): JSX.Element {
     const {fallBack} = React.useContext(BrFallBackContext);
     const empty = component?.getChildren().length === 0;
     return <div className={page?.isPreview() ? 'hst-container' : undefined}>
@@ -57,4 +50,16 @@ export function LayoutContainer({children, page, component}: React.PropsWithChil
             )
         })}
     </div>
+}
+
+export function LayoutNoMarkupContainer({children, page, component}: React.PropsWithChildren<BrProps>): JSX.Element {
+    const {fallBack} = React.useContext(BrFallBackContext);
+    const empty = component?.getChildren().length === 0;
+    return <>
+        {empty ? fallBack : React.Children.map(children, (child) => {
+            return (
+                <>{child}</>
+            )
+        })}
+    </>
 }
