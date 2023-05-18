@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import axios from 'axios';
 import {GetServerSideProps, InferGetServerSidePropsType} from 'next';
-import Link from 'next/link';
-import {BrComponent, BrPage, BrPageContext} from '@bloomreach/react-sdk';
-import {initialize, Page} from '@bloomreach/spa-sdk';
 import {relevance} from '@bloomreach/spa-sdk/lib/express';
-import {Banner, Content, Menu, NewsList, CookieConsent} from '../components';
 import {buildConfiguration} from '../utils/buildConfiguration';
 import PinkBanner from "../components/PinkBanner";
 import CallToAction from "../components/CallToAction";
@@ -33,7 +29,6 @@ import Header from "../partial/header";
 import Bottom from "../partial/Bottom";
 import {BrContent} from "@/partial/BrContent";
 import FallBack from "@/partial/FallBack";
-import {BrElement} from "@/partial/BrElement";
 
 export const getServerSideProps: GetServerSideProps = async ({req: request, res: response, resolvedUrl: path}) => {
     relevance(request, response);
@@ -95,6 +90,7 @@ export default function Index({
 
                         <BrContent configuration={{...configuration, httpClient: axios}}
                                    mapping={mapping} container={'banner4'} fallBack={<FallBack/>}/>
+                        
 
                         {Banner3()}
 
