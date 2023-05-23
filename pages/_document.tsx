@@ -10,28 +10,27 @@ export default function Document() {
                       crossOrigin="anonymous"/>
 
                 <link rel="preload"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/4ada1f201a0ddea9.css"
+                      href="/css/4ada1f201a0ddea9.css"
                       as="style"/>
                 <link rel="stylesheet"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/4ada1f201a0ddea9.css"
+                      href="/css/4ada1f201a0ddea9.css"
                       data-n-g=""/>
                 <link rel="preload"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/5f9e7359887782ed.css"
+                      href="/css/5f9e7359887782ed.css"
                       as="style"/>
                 <link rel="stylesheet"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/5f9e7359887782ed.css"
+                      href="/css/5f9e7359887782ed.css"
                       data-n-p=""/>
                 <link rel="preload"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/e46435daad24b769.css"
+                      href="/css/e46435daad24b769.css"
                       as="style"/>
                 <link rel="stylesheet"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/e46435daad24b769.css"/>
+                      href="/css/e46435daad24b769.css"/>
                 <link rel="preload"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/690858c0f172c7bf.css"
+                      href="/css/690858c0f172c7bf.css"
                       as="style"/>
                 <link rel="stylesheet"
-                      href="https://cdn-skin.prettylittlething.com/use1/_next/static/css/690858c0f172c7bf.css"/>
-
+                      href="/css/690858c0f172c7bf.css"/>
             </Head>
             <body>
             <Main/>
