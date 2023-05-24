@@ -31,6 +31,7 @@ import Footer from "../partial/Footer";
 import Head from "next/head";
 import Header from "../partial/header";
 import Bottom from "../partial/Bottom";
+import Products from "@/components/Products";
 
 export const getServerSideProps: GetServerSideProps = async ({req: request, res: response, resolvedUrl: path}) => {
     relevance(request, response);
@@ -45,7 +46,7 @@ export default function Index({
                                   configuration,
                                   page,
                               }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
-    const mapping = {PinkBanner, "AboveBelowSplash": CallToAction, "Caroursel": Splash, Banners}
+    const mapping = {PinkBanner, "AboveBelowSplash": CallToAction, "Caroursel": Splash, Banners, Products}
 
     return (
         <>

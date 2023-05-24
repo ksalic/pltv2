@@ -1,0 +1,403 @@
+[
+  {
+    "body": {
+      "name": "bruialphaByCategory",
+      "enabled": true,
+      "type": "FieldGroup",
+      "presentation": {
+        "displayName": "by Category",
+        "layout": "one-column"
+      },
+      "fields": [
+        {
+          "name": "category",
+          "type": "FieldGroup",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Category",
+            "hint": "",
+            "layoutColumn": 1
+          },
+          "validations": {},
+          "defaultValue": [
+            {
+              "fields": {
+                "categoryid": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "fieldGroupType": "CommerceCategoryCompound"
+        }
+      ]
+    },
+    "type": "content-type",
+    "description": "create field group: bruialphaByCategory",
+    "method": "PUT",
+    "skipIfExists": false,
+    "path": "/development/bruialphaByCategory",
+    "responseCode": 201
+  },
+  {
+    "body": {
+      "name": "bruialphaByKeyword",
+      "enabled": true,
+      "type": "FieldGroup",
+      "presentation": {
+        "displayName": "by Keyword",
+        "layout": "one-column"
+      },
+      "fields": [
+        {
+          "name": "query",
+          "type": "String",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Query",
+            "hint": "",
+            "layoutColumn": 1,
+            "displayType": "Simple"
+          },
+          "validations": {
+            "maxLength": null
+          },
+          "defaultValue": [
+            ""
+          ]
+        }
+      ]
+    },
+    "type": "content-type",
+    "description": "create field group: bruialphaByKeyword",
+    "method": "PUT",
+    "skipIfExists": false,
+    "path": "/development/bruialphaByKeyword",
+    "responseCode": 201
+  },
+  {
+    "body": {
+      "name": "bruialphaProducts",
+      "enabled": true,
+      "type": "FieldGroup",
+      "presentation": {
+        "displayName": "BrUI - Products",
+        "layout": "one-column"
+      },
+      "fields": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Title",
+            "hint": "",
+            "layoutColumn": 1,
+            "displayType": "Simple"
+          },
+          "validations": {
+            "maxLength": null
+          },
+          "defaultValue": [
+            ""
+          ]
+        },
+        {
+          "name": "search",
+          "type": "SelectableFieldGroup",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Search",
+            "hint": "",
+            "layoutColumn": 1,
+            "contentPickerType": "links",
+            "showFieldGroupNames": false
+          },
+          "validations": {
+            "maxItem": 1
+          },
+          "defaultValue": [],
+          "fieldGroupTypes": [
+            "bruialphaByKeyword",
+            "bruialphaByCategory"
+          ]
+        },
+        {
+          "name": "limit",
+          "type": "String",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Limit",
+            "hint": "",
+            "layoutColumn": 1,
+            "displayType": "Simple"
+          },
+          "validations": {
+            "maxLength": null
+          },
+          "defaultValue": [
+            "6"
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Offset",
+            "hint": "",
+            "layoutColumn": 1,
+            "displayType": "Simple"
+          },
+          "validations": {
+            "maxLength": null
+          },
+          "defaultValue": [
+            ""
+          ]
+        },
+        {
+          "name": "sortFields",
+          "type": "String",
+          "required": false,
+          "multiple": false,
+          "presentation": {
+            "caption": "Sort Fields",
+            "hint": "",
+            "layoutColumn": 1,
+            "displayType": "Simple"
+          },
+          "validations": {
+            "maxLength": null
+          },
+          "defaultValue": [
+            ""
+          ]
+        }
+      ]
+    },
+    "type": "content-type",
+    "description": "create field group: bruialphaProducts",
+    "method": "PUT",
+    "skipIfExists": false,
+    "path": "/development/bruialphaProducts",
+    "responseCode": 201
+  },
+  {
+    "body": {
+      "id": "plt/products",
+      "extends": "base/component",
+      "hidden": false,
+      "system": false,
+      "xtype": null,
+      "ctype": "Products",
+      "contentType": "bruialphaProducts",
+      "label": "Products",
+      "icon": "data:image/png;base64,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",
+      "parameters": [
+        {
+          "name": "lg",
+          "valueType": "string",
+          "required": false,
+          "hidden": false,
+          "overlay": false,
+          "defaultValue": "auto",
+          "displayName": "Products in viewport",
+          "system": false,
+          "config": {
+            "value": [
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "structuredValues": null,
+            "valueListProvider": null,
+            "sourceId": null,
+            "type": "dropdown"
+          }
+        }
+      ]
+    },
+    "type": "site",
+    "responseCode": 201,
+    "skipIfExists": false,
+    "method": "PUT",
+    "description": "create component: Products",
+    "path": "/channels/{channel_id}/component_groups/plt/components/products"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "discoveryAccountId",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": "Account ID",
+      "system": false,
+      "config": null
+    },
+    "path": "/channels/{channel_id}/parameters/discoveryAccountId",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: Account ID"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "discoveryDomainKey",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": "Domain Key",
+      "system": false,
+      "config": null
+    },
+    "path": "/channels/{channel_id}/parameters/discoveryDomainKey",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: Domain Key"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "discoveryViewId",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": "View ID",
+      "system": false,
+      "config": null
+    },
+    "path": "/channels/{channel_id}/parameters/discoveryViewId",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: View ID"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "discoveryRealm",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "STAGING",
+      "displayName": "Environment",
+      "system": false,
+      "config": {
+        "value": [
+          "STAGING",
+          "PRODUCTION"
+        ],
+        "structuredValues": null,
+        "valueListProvider": null,
+        "sourceId": null,
+        "type": "dropdown"
+      }
+    },
+    "path": "/channels/{channel_id}/parameters/discoveryRealm",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: Environment"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "engagementTargetURL",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "https://demoapp-api.bloomreach.com",
+      "displayName": "Engagement Target URL",
+      "system": false,
+      "config": {
+        "value": [
+          "https://demoapp-api.bloomreach.com",
+          "https://app-api.bloomreach.com"
+        ],
+        "structuredValues": null,
+        "valueListProvider": null,
+        "sourceId": null,
+        "type": "dropdown"
+      }
+    },
+    "path": "/channels/{channel_id}/parameters/engagementTargetURL",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: Engagement Target URL"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "engagementProjectToken",
+      "valueType": "string",
+      "required": false,
+      "hidden": false,
+      "overlay": false,
+      "defaultValue": "",
+      "displayName": "Engagement Project Token",
+      "system": false,
+      "config": null
+    },
+    "path": "/channels/{channel_id}/parameters/engagementProjectToken",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel parameter: Engagement Project Token"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "discovery",
+      "displayName": "Discovery",
+      "parameters": [
+        "discoveryAccountId",
+        "discoveryDomainKey",
+        "discoveryViewId",
+        "discoveryRealm"
+      ]
+    },
+    "path": "/channels/{channel_id}/fieldgroups/discovery",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel fieldgroup: Discovery"
+  },
+  {
+    "method": "PUT",
+    "body": {
+      "name": "engagement",
+      "displayName": "Engagement",
+      "parameters": [
+        "engagementTargetURL",
+        "engagementProjectToken"
+      ]
+    },
+    "path": "/channels/{channel_id}/fieldgroups/engagement",
+    "skipIfExists": false,
+    "responseCode": 201,
+    "type": "site",
+    "description": "create channel fieldgroup: Engagement"
+  }
+
+]
