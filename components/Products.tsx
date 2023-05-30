@@ -53,9 +53,10 @@ export default function Products({page, component}: BrProps<ContainerItem>) {
             rows: Number(content?.limit),
             view_id: channel.discoveryViewId,
             sort: content?.sortFields,
-            url: window.location.href
+            url: window.location.href,
+            fq: getFQFromComponentModel(content)
         }).then(result => {
-            setProducts(result?.response?.docs ?? [])
+            setProducts(sortProductsFromComponentModel(content, result?.response?.docs ?? []))
             setLoading(false)
         }).catch(reason => setErrorMessage(reason.toString()))
 
@@ -126,11 +127,47 @@ export default function Products({page, component}: BrProps<ContainerItem>) {
     )
 }
 
+export function sortProductsFromComponentModel(content: any | null | undefined, products: [SearchResponseDoc]): [SearchResponseDoc] {
+    if (content?.search.length > 0) {
+        switch (content?.search[0].contentType) {
+            case 'brxsaas:bruialphaByProducts':
+                const order = content?.search[0].products?.map((product: any) => {
+                    const [, id,] = product.productid.match(/id=([\w\d._=-]+[\w\d=]?)?;code=([\w\d._=/-]+[\w\d=]?)?/i) ?? [];
+                    return id
+                })
+                return products.sort((a, b) => order.indexOf(a.pid) - order.indexOf(b.pid))
+            default:
+                return products
+        }
+    }
+    return products
+
+}
+
+export function getFQFromComponentModel(content: any | null | undefined) {
+    if (content?.search.length > 0) {
+        switch (content?.search[0].contentType) {
+            case 'brxsaas:bruialphaByProducts':
+                const fq = `pid:${content?.search[0].products?.map((product: any) => {
+                    const [, id,] = product.productid.match(/id=([\w\d._=-]+[\w\d=]?)?;code=([\w\d._=/-]+[\w\d=]?)?/i) ?? [];
+                    return `"${id}"`
+                }).join(" OR ")}`
+                return fq
+            default:
+                return ''
+        }
+    }
+    return ''
+
+}
+
 export function getQueryFromComponentModel(content: any | null | undefined) {
     if (content?.search.length > 0) {
         switch (content?.search[0].contentType) {
             case 'brxsaas:bruialphaByKeyword':
                 return content?.search[0].query
+            case 'brxsaas:bruialphaByProducts':
+                return ""
             case 'brxsaas:bruialphaByCategory' :
                 let catid = content?.search[0]?.category.categoryid;
                 try {
@@ -147,11 +184,13 @@ export function getQueryFromComponentModel(content: any | null | undefined) {
 
 }
 
+
 export function getRequestTypeFromComponentModel(content: any | null | undefined) {
     if (content?.search.length > 0) {
         console.info(content?.search[0].contentType)
         switch (content?.search[0].contentType) {
             case 'brxsaas:bruialphaByKeyword':
+            case 'brxsaas:bruialphaByProducts':
                 return 'keyword'
             case 'brxsaas:bruialphaByCategory' :
                 return 'category'
